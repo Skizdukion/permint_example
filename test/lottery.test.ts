@@ -20,7 +20,7 @@ describe("Flashbot Unit Tests", async function () {
       const blockNumBefore = await ethers.provider.getBlockNumber();
       const blockBefore = await ethers.provider.getBlock(blockNumBefore);
       const timestampBefore = blockBefore.timestamp;
-      const encodeMessage = await lottery.encodeFreeClaimHasedMessage(
+      const encodeMessage = await lottery.encodeFreeClaimTicketHasedMessage(
         deployer,
         0,
         timestampBefore + 120,
@@ -28,7 +28,7 @@ describe("Flashbot Unit Tests", async function () {
       );
       console.log(encodeMessage);
       const [signed, r, s, v] = await offChainSignGetRSV(encodeMessage);
-      const tx = await lottery.freeClaimPermit(
+      const tx = await lottery.freeClaimTicketPermit(
         timestampBefore + 120,
         [1, 2, 3, 4],
         v,
@@ -42,7 +42,7 @@ describe("Flashbot Unit Tests", async function () {
       const blockNumBefore = await ethers.provider.getBlockNumber();
       const blockBefore = await ethers.provider.getBlock(blockNumBefore);
       const timestampBefore = blockBefore.timestamp;
-      const encodeMessage = await lottery.encodeFreeClaimHasedMessage(
+      const encodeMessage = await lottery.encodeFreeClaimTicketHasedMessage(
         deployer,
         0,
         timestampBefore + 120,
@@ -54,7 +54,7 @@ describe("Flashbot Unit Tests", async function () {
         2
       );
       await expect(
-        lottery.freeClaimPermit(
+        lottery.freeClaimTicketPermit(
           timestampBefore + 120,
           [1, 2, 3, 4],
           v,

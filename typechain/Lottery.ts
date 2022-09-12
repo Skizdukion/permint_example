@@ -31,10 +31,10 @@ export interface LotteryInterface extends utils.Interface {
     "drawed()": FunctionFragment;
     "drawing(uint256)": FunctionFragment;
     "drawingPhase()": FunctionFragment;
-    "encodeFreeClaimHasedMessage(address,uint256,uint256,uint8[4])": FunctionFragment;
+    "encodeFreeClaimTicketHasedMessage(address,uint256,uint256,uint8[4])": FunctionFragment;
     "enterDrawingPhase()": FunctionFragment;
     "freeClaimCounts(address)": FunctionFragment;
-    "freeClaimPermit(uint256,uint8[4],uint8,bytes32,bytes32)": FunctionFragment;
+    "freeClaimTicketPermit(uint256,uint8[4],uint8,bytes32,bytes32)": FunctionFragment;
     "generateNumberIndexKey(uint8[4])": FunctionFragment;
     "getMatchingRewardAmount(uint256,uint256)": FunctionFragment;
     "getNumbersTicket(uint256)": FunctionFragment;
@@ -121,7 +121,7 @@ export interface LotteryInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "encodeFreeClaimHasedMessage",
+    functionFragment: "encodeFreeClaimTicketHasedMessage",
     values: [
       string,
       BigNumberish,
@@ -138,7 +138,7 @@ export interface LotteryInterface extends utils.Interface {
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "freeClaimPermit",
+    functionFragment: "freeClaimTicketPermit",
     values: [
       BigNumberish,
       [BigNumberish, BigNumberish, BigNumberish, BigNumberish],
@@ -327,7 +327,7 @@ export interface LotteryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "encodeFreeClaimHasedMessage",
+    functionFragment: "encodeFreeClaimTicketHasedMessage",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -339,7 +339,7 @@ export interface LotteryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "freeClaimPermit",
+    functionFragment: "freeClaimTicketPermit",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -620,7 +620,7 @@ export interface Lottery extends BaseContract {
 
     drawingPhase(overrides?: CallOverrides): Promise<[boolean]>;
 
-    encodeFreeClaimHasedMessage(
+    encodeFreeClaimTicketHasedMessage(
       _sender: string,
       _freeClaimCounts: BigNumberish,
       _timeout: BigNumberish,
@@ -637,7 +637,7 @@ export interface Lottery extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
-    freeClaimPermit(
+    freeClaimTicketPermit(
       _timeout: BigNumberish,
       _numbers: [BigNumberish, BigNumberish, BigNumberish, BigNumberish],
       _v: BigNumberish,
@@ -866,7 +866,7 @@ export interface Lottery extends BaseContract {
 
   drawingPhase(overrides?: CallOverrides): Promise<boolean>;
 
-  encodeFreeClaimHasedMessage(
+  encodeFreeClaimTicketHasedMessage(
     _sender: string,
     _freeClaimCounts: BigNumberish,
     _timeout: BigNumberish,
@@ -880,7 +880,7 @@ export interface Lottery extends BaseContract {
 
   freeClaimCounts(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-  freeClaimPermit(
+  freeClaimTicketPermit(
     _timeout: BigNumberish,
     _numbers: [BigNumberish, BigNumberish, BigNumberish, BigNumberish],
     _v: BigNumberish,
@@ -1106,7 +1106,7 @@ export interface Lottery extends BaseContract {
 
     drawingPhase(overrides?: CallOverrides): Promise<boolean>;
 
-    encodeFreeClaimHasedMessage(
+    encodeFreeClaimTicketHasedMessage(
       _sender: string,
       _freeClaimCounts: BigNumberish,
       _timeout: BigNumberish,
@@ -1121,7 +1121,7 @@ export interface Lottery extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    freeClaimPermit(
+    freeClaimTicketPermit(
       _timeout: BigNumberish,
       _numbers: [BigNumberish, BigNumberish, BigNumberish, BigNumberish],
       _v: BigNumberish,
@@ -1412,7 +1412,7 @@ export interface Lottery extends BaseContract {
 
     drawingPhase(overrides?: CallOverrides): Promise<BigNumber>;
 
-    encodeFreeClaimHasedMessage(
+    encodeFreeClaimTicketHasedMessage(
       _sender: string,
       _freeClaimCounts: BigNumberish,
       _timeout: BigNumberish,
@@ -1429,7 +1429,7 @@ export interface Lottery extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    freeClaimPermit(
+    freeClaimTicketPermit(
       _timeout: BigNumberish,
       _numbers: [BigNumberish, BigNumberish, BigNumberish, BigNumberish],
       _v: BigNumberish,
@@ -1654,7 +1654,7 @@ export interface Lottery extends BaseContract {
 
     drawingPhase(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    encodeFreeClaimHasedMessage(
+    encodeFreeClaimTicketHasedMessage(
       _sender: string,
       _freeClaimCounts: BigNumberish,
       _timeout: BigNumberish,
@@ -1671,7 +1671,7 @@ export interface Lottery extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    freeClaimPermit(
+    freeClaimTicketPermit(
       _timeout: BigNumberish,
       _numbers: [BigNumberish, BigNumberish, BigNumberish, BigNumberish],
       _v: BigNumberish,
